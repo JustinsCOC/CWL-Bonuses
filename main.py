@@ -1,7 +1,7 @@
 import openpyxl
 
 # Load the overall sheet containing all attacker names
-workbook = openpyxl.load_workbook('C:\\Users\\justi\\Downloads\\psychoblue2.xlsx')
+workbook = openpyxl.load_workbook('Put the location of your sheet')
 overall_sheet = workbook.worksheets[0]
 
 # Create a dictionary to store calculated data for each attacker
