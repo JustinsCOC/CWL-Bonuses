@@ -1,7 +1,8 @@
 import openpyxl
+from colorama import Fore, Style
 
 # Load the overall sheet containing all attacker names
-workbook = openpyxl.load_workbook('route to the location of sheet')
+workbook = openpyxl.load_workbook('C:\\Users\\justi\\Downloads\\ulcer.xlsx')
 overall_sheet = workbook.worksheets[0]
 
 # Create a dictionary to store calculated data for each attacker
@@ -70,9 +71,14 @@ for attacker_name, data in attacker_data.items():
 # Sort the attacker_net_stars dictionary by values (net stars)
 sorted_attackers = sorted(attacker_net_stars.items(), key=lambda x: x[1], reverse=True)
 
-# Iterate through the sorted dictionary to display the net stars for each attacker
-for attacker_name, net_stars in sorted_attackers:
-    print(f"{attacker_name}: Net Stars: {net_stars}")
-
-# Save the updated workbook if needed
-# workbook.save('updated_file.xlsx')
+# Print formatted output with colors and style
+print("\nNet Stars Leaderboard:\n")
+print("{:<8} {:<30} {}".format("Rank", "Attacker Name", "Net Stars"))
+print("=" * 50)
+for rank, (attacker_name, net_stars) in enumerate(sorted_attackers, start=1):
+    if net_stars >= 0:
+        color = Fore.GREEN
+    else:
+        color = Fore.RED
+    formatted_output = "{:<8} {:<30} {}{:>10}{}".format(rank, attacker_name, color, net_stars, Style.RESET_ALL)
+    print(formatted_output)
