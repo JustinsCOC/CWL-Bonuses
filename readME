@@ -1,1 +1,1 @@
-If you're utilizing /export cwl, you must delete the 2nd and 3rd sheet to make it work. The code only reads the first 8 sheets and pulls data from specific columns. Failure to remove will print an except error.
+export your excel and specify the path for the script
